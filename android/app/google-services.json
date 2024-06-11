@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "553793225634",
+    "firebase_url": "https://faturamatikmobil.firebaseio.com",
+    "project_id": "faturamatikmobil",
+    "storage_bucket": "faturamatikmobil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553793225634:android:d05f1543ee531ed83c68fb",
+        "android_client_info": {
+          "package_name": "ortakmarketim.ft.com.tr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553793225634-5e521je7jr8pftcd9bdh4g9joo5n03le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXzXCVjXCrRev2Laes4DTrq4-iHvoTOGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553793225634-5e521je7jr8pftcd9bdh4g9joo5n03le.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "553793225634-4nlf6af0pq7t2gnhbmifd7bt2kau641e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tr.com.faturamatik",
+                "app_store_id": "1347858931"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

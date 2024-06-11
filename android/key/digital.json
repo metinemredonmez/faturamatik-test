@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ortakmarketim.ft.com.tr",
+      "sha256_cert_fingerprints": [
+        "C3:06:C0:4C:2A:E9:58:A6:52:AF:C5:A9:15:2B:FE:27:69:24:75:85:44:C1:7B:D8:13:79:D0:24:D3:6D:6A:ED"
+      ]
+    }
+  }
+]
