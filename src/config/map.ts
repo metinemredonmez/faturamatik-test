@@ -1,0 +1,156 @@
+import React from 'react';
+import { Linking, Platform } from 'react-native';
+import queryString from 'query-string';
+
+export const geoCordStringify = (latitude: any, longitude: any) => {
+    [latitude, longitude].map(coord => {
+        if (typeof coord !== 'number') {
+            throw new Error('Entered a non-number value for geo coordinates.');
+        }
+    });
+
+    return `${latitude},${longitude}`;
+}
+
+export const validateTravelType = (type: any) => {
+    // Google supports "biking", omitted for sake of compatability and user expectations
+    const TRAVEL_TYPE_ENUM = ['drive', 'walk', 'public_transport'];
+    const validType = TRAVEL_TYPE_ENUM.filter(validType => validType === type);
+    if (!validType) {
+        throw new Error(`Recieved ${type}, expected ${TRAVEL_TYPE_ENUM}`);
+    }
+}
+
+// cleanObject :: {} -> {}
+// Creates a new object that removes any empty values
+const cleanObject = (input: any) => {
+    return Object.keys(input).reduce((acc, key, index,) => {
+        const currentValue = input[key];
+        return (currentValue) ?
+            Object.assign({}, acc, { [key]: currentValue }) : acc;
+    }, {});
+}
+
+// Create apple parameters
+export const createAppleParams = (params: any) => {
+    const travelTypeMap: any = {
+        drive: 'd',
+        walk: 'w',
+        public_transport: 'r'
+    };
+
+    const map = {
+        ll: params.coords,
+        z: params.zoom,
+        dirflg: travelTypeMap[params.travelType],
+        q: params.query,
+        saddr: params.start,
+        daddr: params.end
+    }
+
+    return cleanObject(map);
+}
+
+// Create google parameters
+export const createGoogleParams = (params: any) => {
+    const travelTypeMap: any = {
+        drive: 'driving',
+        walk: 'walking',
+        public_transport: 'transit'
+    };
+
+    const map: any = {
+        origin: params.start,
+        destination: params.end,
+        travelmode: travelTypeMap[params.travelType],
+        zoom: params.zoom
+    };
+
+    if (params.coords) {
+        map.center = params.coords;
+    } else {
+        map.query = params.query;
+    }
+
+    return cleanObject(map);
+}
+
+// The map portion API is defined here essentially
+export const createQueryParameters = ({
+    latitude,
+    longitude,
+    zoom = 15,
+    start = '',
+    end = '',
+    query = '',
+    travelType = 'drive'
+}: any) => {
+    validateTravelType(travelType);
+
+    const formatArguments: any = {
+        start,
+        end,
+        query,
+        travelType,
+        zoom
+    }
+
+    if (latitude && longitude) {
+        formatArguments.coords = geoCordStringify(latitude, longitude);
+    }
+
+    return {
+        apple: createAppleParams(formatArguments),
+        google: createGoogleParams(formatArguments)
+    }
+};
+
+export default function open(params: any) {
+    createOpenLink(params)();
+}
+
+export function createOpenLink({ provider, ...params }: any) {
+    // Returns a delayed async function that opens when executed
+    let defaultProvider = 'google';
+    if (!provider) {
+        if (Platform.OS === 'ios') {
+            defaultProvider = 'apple';
+        }
+    }
+
+    let mapProvider = provider || defaultProvider;
+    // Allow override provider, otherwise use the default provider
+    const mapLink = createMapLink({ provider: mapProvider, ...params });
+    return async () => Linking.openURL(mapLink).catch(err => console.error('An error occurred', err));
+}
+
+export function createMapLink({
+    provider = 'google',
+    ...params
+}) {
+    // Assume query is first choice
+    const link: any = {
+        google: 'https://www.google.com/maps/search/?api=1&',
+        apple: 'http://maps.apple.com/?'
+    };
+
+    // Display if lat and longitude is specified
+    if (params.latitude && params.longitude) {
+        link.google = 'https://www.google.com/maps/@?api=1&map_action=map&';
+    }
+
+    // Directions if start and end is present
+    if (params.end) {
+        link.google = 'https://www.google.com/maps/dir/?api=1&';
+    }
+
+    const queryParameters = createQueryParameters(params);
+    // Escaped commas cause unusual error with Google map
+    const appleQs = queryString.stringify(queryParameters.apple).replace(/%2C/g, ',');
+    const googleQs = queryString.stringify(queryParameters.google).replace(/%2C/g, ',');
+
+    link.google += googleQs;
+    link.apple += appleQs;
+
+    return link[provider];
+}
