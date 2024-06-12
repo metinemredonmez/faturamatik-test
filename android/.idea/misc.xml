@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-async-storage/async-storage/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-community/datetimepicker/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-firebase/analytics/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-firebase/app/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-firebase/messaging/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native-picker/picker/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/@react-native/gradle-plugin" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/appcenter-analytics/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/appcenter-crashes/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/appcenter/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/lottie-react-native/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-biometrics/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-code-push/android/app" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-date-picker/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-geolocation-service/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-maps/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-permissions/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-reanimated/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-safe-area-context/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-screens/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-svg/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-ui-lib/lib/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-version-check/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-view-pdf/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-webview/android" />
+    <file type="web" url="file://$PROJECT_DIR$/../node_modules/react-native-wheel-pick/android" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK" />
+</project>
